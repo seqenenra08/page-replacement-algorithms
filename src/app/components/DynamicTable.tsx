@@ -1,4 +1,4 @@
-export default function DynamicTable() {
+export default function DynamicTable({inputString, inputFrame, selectedOption}: {inputString: string, inputFrame: number, selectedOption: string}) {
     return(
         <div className="flex flex-col items-center justify-center w-[50%] h-[70vh] bg-white text-black gap-5">
             <h1 className="text-2xl">Dynamic Table</h1>
@@ -6,7 +6,7 @@ export default function DynamicTable() {
                 <thead>
                     <tr>
                         {
-                            ["1", "2", "3", "4", "5", "6", "7"].map((header, index) => (
+                            inputString.split("").map((header, index) => (
                                 <th key={index} className="border border-gray-300 p-2 bg-gray-100">
                                     {header}
                                 </th>
@@ -16,7 +16,7 @@ export default function DynamicTable() {
                 </thead>
                 <tbody>
                     {
-                        Array.from({ length: 3 }, (_, rowIndex) => (
+                        Array.from({ length: inputFrame }, (_, rowIndex) => (
                             <tr key={rowIndex}>
                                 {
                                     ["1", "2", "3", "4", "5", "6", "7"].map((cell, cellIndex) => (
