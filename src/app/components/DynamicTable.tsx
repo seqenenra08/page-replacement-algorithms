@@ -1,8 +1,8 @@
-export default function DynamicTable({inputString, inputFrame, selectedOption}: {inputString: string, inputFrame: number, selectedOption: string}) {
+export default function DynamicTable({inputString, inputFrame, selectedOption, optionArray}: {inputString: string, inputFrame: number, selectedOption: string, optionArray: string[][]}) {
     return(
         <div className="flex flex-col items-center justify-center w-[50%] h-[70vh] bg-white text-black gap-5">
             <h1 className="text-2xl">Dynamic Table</h1>
-            <table className="border-collapse border border-gray-300 w-full">
+            <table className="border-collapse border border-gray-300 w-full max-lg:text-sm">
                 <thead>
                     <tr>
                         {
@@ -16,10 +16,10 @@ export default function DynamicTable({inputString, inputFrame, selectedOption}: 
                 </thead>
                 <tbody>
                     {
-                        Array.from({ length: inputFrame }, (_, rowIndex) => (
+                        optionArray.map((row, rowIndex) => (
                             <tr key={rowIndex}>
                                 {
-                                    ["1", "2", "3", "4", "5", "6", "7"].map((cell, cellIndex) => (
+                                    row.map((cell, cellIndex) => (
                                         <td key={cellIndex} className="border border-gray-300 p-2 text-center">
                                             {cell}
                                         </td>
